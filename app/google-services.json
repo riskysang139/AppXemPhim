@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "97485232739",
+    "project_id": "appxemphim-ec81a",
+    "storage_bucket": "appxemphim-ec81a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97485232739:android:bf52422e6b2287c2e43656",
+        "android_client_info": {
+          "package_name": "com.example.appxemphim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97485232739-las8t28lfcu9t6sh98ba1nh0bknfqc34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appxemphim",
+            "certificate_hash": "da16621290ffa0ba2a8b9efac7e96454eb0f8f2e"
+          }
+        },
+        {
+          "client_id": "97485232739-g4uh328hnsk882tact3qj8fs7gl72bve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv68YKZY6Z6oOk56vjXHE8b67Wz46BgZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97485232739-g4uh328hnsk882tact3qj8fs7gl72bve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

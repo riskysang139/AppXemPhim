@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/imagelogin"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        ></TextView>
+    <ImageView
+        android:layout_width="@dimen/_150sdp"
+        android:id="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/line"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_height="@dimen/_150sdp">
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/line"
+        android:text="Chào Mừng Bạn Tới Movie Funny"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+
+    </TextView>
+</RelativeLayout>
+</layout>
