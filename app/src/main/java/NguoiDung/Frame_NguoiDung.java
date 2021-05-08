@@ -2,10 +2,12 @@ package NguoiDung;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,7 @@ public class Frame_NguoiDung extends Fragment
 {
     FrameNguoiDungBinding binding;
     FirebaseAuth firebaseAuth;
+    UserInfo profile;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,11 +39,9 @@ public class Frame_NguoiDung extends Fragment
         View view=binding.getRoot();
         BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setVisibility(View.VISIBLE);
-
+        Glide.with(getContext()).load(R.drawable.logomovieapp).into(binding.imgProfile);
         firebaseAuth=FirebaseAuth.getInstance();
         checkUser();
-
-
         binding.btndangKi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,9 +59,13 @@ public class Frame_NguoiDung extends Fragment
 
     private void checkUser() {
         FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        String email="";
+        Uri photo = null;
         if(firebaseUser==null)
         {
-
+            binding.btnDangXuat.setVisibility(View.INVISIBLE);
+            binding.btnHistory.setVisibility(View.INVISIBLE);
+            binding.btnnoAdver.setBackgroundResource(R.drawable.shapelinearbtnup);
             binding.btndangNhap.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,11 +75,16 @@ public class Frame_NguoiDung extends Fragment
         }
         else
         {
-            binding.btndangNhap.setText("Đăng Xuất");
-            String name=firebaseUser.getDisplayName();
-            binding.txtcheck.setText(name);
-            Glide.with(getContext()).load(firebaseUser.getPhotoUrl()).circleCrop().into(binding.imgProfile);
-            binding.btndangNhap.setOnClickListener(new View.OnClickListener() {
+            for (UserInfo profile : firebaseUser.getProviderData()) {
+                email=profile.getEmail();
+                photo=profile.getPhotoUrl();
+            }
+            binding.btnHistory.setVisibility(View.VISIBLE);
+            binding.linearSignInUp.setVisibility(View.INVISIBLE);
+            binding.txtUserID.setText(firebaseUser.getUid());
+            binding.txtEmail.setText(email);
+            Glide.with(getContext()).load(photo).circleCrop().into(binding.imgProfile);
+            binding.btnDangXuat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     firebaseAuth.signOut();

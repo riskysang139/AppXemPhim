@@ -128,7 +128,7 @@
                 android:id="@+id/rcvPhoBien"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:layout_height="@dimen/_350sdp">
+                android:layout_height="@dimen/_380sdp">
             </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
     </ScrollView>
