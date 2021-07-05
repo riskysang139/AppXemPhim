@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/maincolor">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/maincolor">
+
+                <TextView
+                    android:id="@+id/txt_trang_chu"
+                    android:layout_width="@dimen/_250sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/maincolor"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:text="@string/title_main_fragment"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toRightOf="@id/txt_trang_chu"
+                    android:background="@color/maincolor"
+                    android:src="@drawable/ic_baseline_search_24" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:layout_below="@id/btnSearch"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/viewAdver"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/maincolor"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_210sdp">
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <Button
+                    android:id="@+id/btnMoreHighligh"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/viewAdver"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/maincolor"
+                    android:backgroundTint="@color/maincolor"
+                    android:drawableRight="@drawable/ic_baseline_more_horiz_24"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/title_hot_series"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvHotSeries"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnMoreHighligh"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_7sdp" />
+
+                <Button
+                    android:id="@+id/btnDacSac"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/rcvHotSeries"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/maincolor"
+                    android:drawableRight="@drawable/ic_baseline_more_horiz_24"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/title_dac_sac"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvDacSac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnDacSac"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/maincolor" />
+
+                <Button
+                    android:id="@+id/btnPhimThinhHanh"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/rcvDacSac"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@color/maincolor"
+                    android:backgroundTint="@color/maincolor"
+                    android:drawableRight="@drawable/ic_baseline_more_horiz_24"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/title_top_trending"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvPhoBien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnPhimThinhHanh"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp" />
+            </RelativeLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

@@ -1,4 +1,4 @@
-package TrangChu.PhimPhoBien;
+package TrangChu.PhimSapChieu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,13 +20,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import TrangChu.ItemClickListener;
-import TrangChu.PhimDacSac.DacSacRVAdapter;
 
-public class PhoBienRVAdapter extends RecyclerView.Adapter<PhoBienRVAdapter.ViewHoder> {
-    List<PhoBienImage> contactlist;
+public class RVSapChieuAdapter extends RecyclerView.Adapter<RVSapChieuAdapter.ViewHoder> {
+    List<SapChieuFilm> contactlist;
     Context context;
 
-    public PhoBienRVAdapter(List<PhoBienImage> contactlist, Context context) {
+    public RVSapChieuAdapter(List<SapChieuFilm> contactlist, Context context) {
         this.contactlist = contactlist;
         this.context = context;
     }
@@ -34,19 +33,19 @@ public class PhoBienRVAdapter extends RecyclerView.Adapter<PhoBienRVAdapter.View
     @NonNull
     @NotNull
     @Override
-    public PhoBienRVAdapter.ViewHoder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rcvphobien,parent,false);
+    public RVSapChieuAdapter.ViewHoder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_phobien,parent,false);
         return new ViewHoder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull PhoBienRVAdapter.ViewHoder holder, int position) {
-            PhoBienImage phoBienImage=contactlist.get(position);
-            Glide.with(context).load(phoBienImage.getPhoBienImage())
-                    .transform(new CenterCrop(),new RoundedCorners(15))
+    public void onBindViewHolder(@NonNull @NotNull RVSapChieuAdapter.ViewHoder holder, int position) {
+            SapChieuFilm sapChieuFilm =contactlist.get(position);
+            Glide.with(context).load(sapChieuFilm.getPhoBienImage())
+                    .transform(new CenterCrop(),new RoundedCorners(25))
                     .into(holder.imageView);
-            holder.txtTitle.setText(phoBienImage.getTextTitlePB());
-            holder.txtPublish.setText(phoBienImage.getTxtPublished());
+            holder.txtTitle.setText(sapChieuFilm.getTextTitleCS());
+            holder.txtCategory.setText(sapChieuFilm.getTxtCategoryCS());
             holder.setItemClickListener(new ItemClickListener() {
                 @Override
                 public void OnClick(View view, int position) {
@@ -62,16 +61,16 @@ public class PhoBienRVAdapter extends RecyclerView.Adapter<PhoBienRVAdapter.View
     public class ViewHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
         TextView txtTitle;
-        TextView txtPublish;
+        TextView txtCategory;
         ItemClickListener itemClickListener;
         public void setItemClickListener(ItemClickListener itemClickListener) {
             this.itemClickListener = itemClickListener;
         }
         public ViewHoder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.imagePhoBien);
-            txtTitle=itemView.findViewById(R.id.txtTitle);
-            txtPublish=itemView.findViewById(R.id.txtPublish);
+            imageView=itemView.findViewById(R.id.imageCS);
+            txtTitle=itemView.findViewById(R.id.txtTitleCS);
+            txtCategory=itemView.findViewById(R.id.textCategoryCS);
         }
 
         @Override

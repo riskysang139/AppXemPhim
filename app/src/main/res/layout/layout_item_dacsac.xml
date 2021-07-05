@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="@dimen/_110sdp"
+        android:background="@color/maincolor"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:id="@+id/imageDacSac"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_height="@dimen/_145sdp">
+        </ImageView>
+        <TextView
+            android:fontFamily="@font/roboto_regular"
+            android:id="@+id/textDacSac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/imageDacSac"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_10sdp">
+        </TextView>
+        <TextView
+            android:fontFamily="@font/roboto_regular"
+            android:id="@+id/textCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/category"
+            android:layout_below="@id/textDacSac"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/_9sdp">
+        </TextView>
+    </RelativeLayout>
+</layout>

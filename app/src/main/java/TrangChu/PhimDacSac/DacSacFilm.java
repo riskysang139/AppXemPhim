@@ -1,8 +1,17 @@
 package TrangChu.PhimDacSac;
 
-public class DacSacImage {
+public class DacSacFilm {
         private String dacSacImage;
         private String textDacSac;
+        private String textCategory;
+
+    public String getTextCategory() {
+        return textCategory;
+    }
+
+    public void setTextCategory(String textCategory) {
+        this.textCategory = textCategory;
+    }
 
     public String getDacSacImage() {
         return dacSacImage;
@@ -20,8 +29,10 @@ public class DacSacImage {
         this.textDacSac = textDacSac;
     }
 
-    public DacSacImage(String dacSacImage, String textDacSac) {
+
+    public DacSacFilm(String dacSacImage, String textDacSac, String textCategory) {
         this.dacSacImage = dacSacImage;
         this.textDacSac = textDacSac;
+        this.textCategory = textCategory;
     }
 }

@@ -2,6 +2,7 @@ package NguoiDung;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -60,14 +61,8 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this, R.layout.activity_signup);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         getSupportActionBar().hide();
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
 
         firebaseAuth=FirebaseAuth.getInstance();
 
@@ -80,42 +75,11 @@ public class SignUpActivity extends AppCompatActivity {
         Glide.with(getBaseContext()).load(R.drawable.google).circleCrop().into(binding.btnLoginGoogle);
         Glide.with(getBaseContext()).load(R.drawable.facebook).circleCrop().into(binding.ViewbtnLoginFacebook);
         Glide.with(getBaseContext()).load(R.drawable.logomovieapp).circleCrop().into(binding.logoApp);
-
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-        binding.btnLoginFacebook.setReadPermissions(Arrays.asList("public_profile", "email","user_photos"));
         mcallbackManager = CallbackManager.Factory.create();
-        binding.ViewbtnLoginFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v.getId()==R.id.ViewbtnLoginFacebook)
-                {
-                    binding.btnLoginFacebook.performClick();
-                }
-            }
-        });
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-        binding.btnLoginFacebook.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
-
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d(TAG, "on Errror" + error.getMessage());
             }
         });
         binding.btndangKi.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
         else if(TextUtils.isEmpty(password))
         {
-            binding.txtPassword.setError("Nhập mật khẩu của bạn ");
+            binding.txtPassword.setError("Mật khẩu không được để trống");
         }
         else if(password.length()<8)
         {
@@ -144,44 +108,15 @@ public class SignUpActivity extends AppCompatActivity {
         }
         else if(password.compareTo(passwordAccuray)!=0)
         {
-            binding.txtEmail.setError("Mật khẩu và xác nhận mật khẩu phải giống nhau");
+            binding.txtEmail.setError("Mật khẩu và xác nhận mật khẩu không khớp");
         }
         else
         {
             firebaseSignUp();
         }
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        mcallbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            Log.d(tag, "on Acti");
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-            } catch (Exception e) {
-                Log.d(tag, "on Acti for result");
-            }
-        }
-    }
 
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                        String uid = firebaseUser.getUid();
-                        String email = firebaseUser.getEmail();
 
-                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                        finish();
-                    }
-                });
-    }
 
     private void firebaseSignUp() {
         //show progress
@@ -195,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                             //get usserr info
                             FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                             String email=firebaseUser.getEmail();
-                            Toast.makeText(SignUpActivity.this,"Account created\n"+email,Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this,"Tạo tài khoản \n"+email +" thành công !!!",Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                             finish();
@@ -205,38 +140,11 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         //sign up failed
-                        Toast.makeText(SignUpActivity.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(SignUpActivity.this,"Tài khoản đã tồn tại ! Vui lòng thử lại",Toast.LENGTH_LONG).show();
+
                     }
                 });
     }
 
-    private void handleFacebookAccessToken(AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Log.d(TAG, "signInWithCredential:success"+user.getPhotoUrl());
-
-                            openProfile();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-    }
-
-    private void openProfile() {
-        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
-        finish();
-    }
 }

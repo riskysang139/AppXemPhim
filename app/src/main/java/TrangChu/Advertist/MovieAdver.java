@@ -1,5 +1,9 @@
 package TrangChu.Advertist;
 
+import androidx.fragment.app.FragmentActivity;
+
+import java.util.ArrayList;
+
 public class MovieAdver {
     private String image;
 

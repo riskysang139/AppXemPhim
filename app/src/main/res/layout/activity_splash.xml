@@ -9,8 +9,7 @@
         android:layout_height="1dp"
         android:id="@+id/line"
         android:visibility="invisible"
-        android:layout_centerInParent="true"
-        ></TextView>
+        android:layout_centerInParent="true"/>
     <ImageView
         android:layout_width="@dimen/_150sdp"
         android:id="@+id/logo"
@@ -22,8 +21,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_below="@id/line"
-        android:text="Chào Mừng Bạn Tới Movie Funny"
+        android:text="@string/welcome_to_app"
         android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/beausanspro_bold"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"

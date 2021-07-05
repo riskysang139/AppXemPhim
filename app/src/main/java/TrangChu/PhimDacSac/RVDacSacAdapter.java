@@ -19,29 +19,30 @@ import java.util.List;
 
 import TrangChu.ItemClickListener;
 
-public class DacSacRVAdapter extends RecyclerView.Adapter<DacSacRVAdapter.ViewHoder> {
-    List<DacSacImage> contactlist;
+public class RVDacSacAdapter extends RecyclerView.Adapter<RVDacSacAdapter.ViewHoder> {
+    List<DacSacFilm> contactlist;
     Context context;
 
-    public DacSacRVAdapter(List<DacSacImage> contactlist, Context context) {
+    public RVDacSacAdapter(List<DacSacFilm> contactlist, Context context) {
         this.contactlist = contactlist;
         this.context = context;
     }
     @NonNull
     @Override
     public ViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rcvdacsac,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_dacsac,parent,false);
         return new ViewHoder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoder holder, int position) {
-        DacSacImage dacSacImage=contactlist.get(position);
+        DacSacFilm dacSacFilm =contactlist.get(position);
         Glide.with(context)
-                .load(dacSacImage.getDacSacImage())
-                .transform(new CenterCrop(),new RoundedCorners(16))
+                .load(dacSacFilm.getDacSacImage())
+                .transform(new CenterCrop(),new RoundedCorners(25))
                 .into(holder.imageView);
-        holder.textView.setText(dacSacImage.getTextDacSac());
+        holder.txtTitle.setText(dacSacFilm.getTextDacSac());
+        holder.txtCategory.setText(dacSacFilm.getTextCategory());
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void OnClick(View view, int position) {
@@ -61,7 +62,8 @@ public class DacSacRVAdapter extends RecyclerView.Adapter<DacSacRVAdapter.ViewHo
     }
     public class ViewHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
-        TextView textView;
+        TextView txtTitle;
+        TextView txtCategory;
         ItemClickListener itemClickListener;
         public void setItemClickListener(ItemClickListener itemClickListener) {
             this.itemClickListener = itemClickListener;
@@ -69,7 +71,8 @@ public class DacSacRVAdapter extends RecyclerView.Adapter<DacSacRVAdapter.ViewHo
         public ViewHoder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.imageDacSac);
-            textView=itemView.findViewById(R.id.textDacSac);
+            txtTitle=itemView.findViewById(R.id.textDacSac);
+            txtCategory=itemView.findViewById(R.id.textCategory);
         }
 
         @Override

@@ -5,6 +5,12 @@
     android:title="Trang chủ"
     android:icon="@drawable/home"/>
     <item
+        android:id="@+id/download"
+        android:title="Tải Xuống"
+        android:icon="@drawable/download">
+
+    </item>
+    <item
         android:id="@+id/lichSu"
         android:title="Lịch Sử"
         android:icon="@drawable/history">

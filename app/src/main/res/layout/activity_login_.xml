@@ -15,14 +15,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/_5sdp"
-            android:src="@drawable/ic_baseline_arrow_back_24"></ImageView>
+            android:src="@drawable/ic_baseline_arrow_back_24"/>
 
         <ImageView
             android:id="@+id/logoApp"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_45sdp"></ImageView>
+            android:layout_marginTop="@dimen/_45sdp"/>
 
         <TextView
             android:id="@+id/theRuleVertical"
@@ -37,15 +37,17 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_centerVertical="true"
-            android:visibility="invisible"></TextView>
+            android:visibility="invisible" />
 
         <EditText
-            android:layout_marginBottom="@dimen/_5sdp"
             android:id="@+id/txtEmail"
-            android:layout_width="@dimen/_230sdp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_above="@id/theRule"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/shapetxttitle"
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawablePadding="@dimen/_10sdp"
@@ -54,22 +56,23 @@
             android:inputType="text"
             android:maxLines="1"
             android:paddingLeft="@dimen/_10sdp"
-            android:textColorHint="#BAFFFFFF"></EditText>
+            android:textColorHint="#BAFFFFFF" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutTxtPass"
-            android:layout_width="@dimen/_230sdp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@id/theRule"
             android:layout_centerInParent="true"
-
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
             app:hintEnabled="false"
-
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPassword"
-                android:layout_width="@dimen/_230sdp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/shapetxttitle"
@@ -82,19 +85,21 @@
                 android:maxLines="1"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_5sdp"
-                android:textColorHint="#BAFFFFFF"></com.google.android.material.textfield.TextInputEditText>
+                android:textColorHint="#BAFFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btndangNhap"
-            android:layout_width="@dimen/_230sdp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@id/layoutTxtPass"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_20sdp"
             android:background="@drawable/shapebtnlogin"
             android:text="Đăng Nhập"
-            android:textSize="@dimen/_14sdp"></Button>
+            android:textSize="@dimen/_14sdp" />
 
         <TextView
             android:id="@+id/txtQuenMatKhau"
@@ -105,7 +110,7 @@
             android:gravity="center"
             android:text="Quên Mật Khẩu ?"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"></TextView>
+            android:textSize="@dimen/_12sdp" />
 
         <TextView
             android:id="@+id/txtSelect"
@@ -116,7 +121,7 @@
             android:gravity="center"
             android:text="Hoặc Đăng Nhập Bằng "
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"></TextView>
+            android:textSize="@dimen/_12sdp" />
 
         <ImageView
             android:id="@+id/btnLoginGoogle"
@@ -126,7 +131,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_5sdp"
-            android:layout_toLeftOf="@id/theRuleVertical"></ImageView>
+            android:layout_toLeftOf="@id/theRuleVertical" />
 
         <LinearLayout
             android:layout_width="@dimen/_40sdp"
@@ -163,7 +168,7 @@
             android:layout_marginBottom="@dimen/_20sdp"
             android:text="Chưa có tài khoản ?"
             android:textColor="#BAFFFFFF"
-            android:textSize="@dimen/_12sdp"></TextView>
+            android:textSize="@dimen/_12sdp" />
 
         <TextView
             android:id="@+id/btnSignUp"

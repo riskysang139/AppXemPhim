@@ -1,6 +1,26 @@
 <resources>
-    <string name="app_name">Funny Movies</string>
-    <string name="facebook_app_id">2539158566393797</string>
-    <string name="fb_login_protocol_scheme">fb2539158566393797</string>
-
+    <string name="fb_login_protocol_scheme" translatable="false"></string>
+    <string name="fb_app_id" translatable="false"></string>
+    <string name="app_name">Movies Funny</string>
+    <string name="sign_up" translatable="false">Đăng Kí</string>
+    <string name="login" translatable="false">Đăng Nhập</string>
+    <string name="hint_pass" translatable="false">Nhập mật khẩu của bạn</string>
+    <string name="hint_pass_access" translatable="false">Xác nhận mật khẩu của bạn</string>
+    <string name="hint_email" translatable="false">Nhập email của bạn</string>
+    <string name="different_choice_login" translatable="false">Hoặc Đăng Nhập Bằng </string>
+    <string name="forget_pass" translatable="false">Quên Mật Khẩu ?</string>
+    <string name="no_account" translatable="false">Chưa có tài khoản ?</string>
+    <string name="title_main_fragment" translatable="false">Trang Chủ</string>
+    <string name="title_hot_series" translatable="false">Phim nổi bật</string>
+    <string name="title_dac_sac" translatable="false">Phim HollyWoods đặc sắc </string>
+    <string name="title_top_trending" translatable="false">Comming soon</string>
+    <string name="date_publish" translatable="false">Ngày Ra Mắt :</string>
+    <string name="welcome_to_app" translatable="false">Chào Mừng Bạn Tới Movie Funny</string>
+    <string name="title_user_fragment" translatable="false">Tài Khoản</string>
+    <string name="history_deal" translatable="false">Lịch Sử Giao Dịch</string>
+    <string name="no_adv" translatable="false">Tắt Quảng Cáo</string>
+    <string name="free_data" translatable="false">Miễn phí data</string>
+    <string name="feed_back" translatable="false">Góp ý</string>
+    <string name="about_our">Về Chúng Tôi</string>
+    <string name="log_out" translatable="false">Đăng Xuất</string>
 </resources>
